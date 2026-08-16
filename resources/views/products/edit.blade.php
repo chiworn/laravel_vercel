@@ -73,7 +73,7 @@
                     
                     @if($product->image)
                     <div class="mb-4 flex items-center gap-4 p-3 bg-white border border-slate-200 rounded-xl">
-                        <img src="{{ asset($product->image) }}" alt="Current image" class="w-16 h-16 object-cover rounded-lg shadow-sm">
+                        <img src="{{ str_starts_with($product->image, 'http') ? $product->image : asset($product->image) }}" alt="Current image" class="w-16 h-16 object-cover rounded-lg shadow-sm">
                         <div class="flex-1 min-w-0">
                             <p class="text-sm font-medium text-slate-700">Current Image</p>
                             <p class="text-xs text-slate-500 truncate">{{ $product->image }}</p>

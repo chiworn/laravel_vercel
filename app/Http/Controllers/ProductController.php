@@ -34,7 +34,7 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             try {
                 if (env('SUPABASE_ACCESS_KEY_ID')) {
-                    $path = $request->file('image')->store('products', 'supabase');
+                    $path = $request->file('image')->store('imageproducts', 'supabase');
                     if ($path === false) {
                         throw new \Exception("Failed to upload image to Supabase. Check your credentials and ensure your project is active.");
                     }
@@ -82,14 +82,14 @@ class ProductController extends Controller
                 if ($product->image) {
                     if (str_starts_with($product->image, 'http')) {
                         $filename = basename(parse_url($product->image, PHP_URL_PATH));
-                        \Illuminate\Support\Facades\Storage::disk('supabase')->delete('products/' . $filename);
+                        \Illuminate\Support\Facades\Storage::disk('supabase')->delete('imageproducts/' . $filename);
                     } elseif (file_exists(public_path($product->image))) {
                         @unlink(public_path($product->image));
                     }
                 }
                 
                 if (env('SUPABASE_ACCESS_KEY_ID')) {
-                    $path = $request->file('image')->store('products', 'supabase');
+                    $path = $request->file('image')->store('imageproducts', 'supabase');
                     if ($path === false) {
                         throw new \Exception("Failed to upload image to Supabase. Check your credentials and ensure your project is active.");
                     }
@@ -115,7 +115,7 @@ class ProductController extends Controller
         if ($product->image) {
             if (str_starts_with($product->image, 'http') && env('SUPABASE_ACCESS_KEY_ID')) {
                 $filename = basename(parse_url($product->image, PHP_URL_PATH));
-                \Illuminate\Support\Facades\Storage::disk('supabase')->delete('products/' . $filename);
+                \Illuminate\Support\Facades\Storage::disk('supabase')->delete('imageproducts/' . $filename);
             } elseif (file_exists(public_path($product->image))) {
                 @unlink(public_path($product->image));
             }

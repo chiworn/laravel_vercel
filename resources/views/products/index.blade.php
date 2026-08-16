@@ -18,7 +18,7 @@
         <!-- Image Section -->
         <div class="relative h-56 bg-slate-100 overflow-hidden shrink-0">
             @if($product->image)
-                <img src="{{ asset($product->image) }}" alt="{{ $product->pro_name }}" class="w-full h-full object-cover transition-transform duration-500">
+                <img src="{{ str_starts_with($product->image, 'http') ? $product->image : asset($product->image) }}" alt="{{ $product->pro_name }}" class="w-full h-full object-cover transition-transform duration-500">
             @else
                 <div class="w-full h-full flex flex-col items-center justify-center text-slate-400">
                     <i class="fa-regular fa-image text-4xl mb-2"></i>
