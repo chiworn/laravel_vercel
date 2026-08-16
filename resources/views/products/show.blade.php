@@ -16,7 +16,7 @@
             <!-- Image Side -->
             <div class="md:w-2/5 bg-slate-100 relative min-h-[300px]">
                 @if($product->image)
-                    <img src="{{ str_starts_with($product->image, 'http') ? $product->image : asset($product->image) }}" alt="{{ $product->pro_name }}" class="absolute inset-0 w-full h-full object-cover">
+                    <img src="{{ str_starts_with($product->image, 'https') ? $product->image : asset($product->image) }}" alt="{{ $product->pro_name }}" class="absolute inset-0 w-full h-full object-cover">
                 @else
                     <div class="absolute inset-0 w-full h-full flex flex-col items-center justify-center text-slate-400 bg-slate-100">
                         <i class="fa-regular fa-image text-6xl mb-4"></i>
